@@ -52,7 +52,6 @@ df_train = df[df['condition'].isin(['Birth Control', 'Depression', 'Pain', 'Anxi
                                     'Ulcerative Colitis', 'Diarrhea', 'Strep Throat', 'Allergies', 'COPD',
                                     'Diabetes, Type 1 ',  'Cold Symptoms', 'Asthma, acute', 'Atrial Fibrillation'])]
 
-
 # Drop columns we won't be using for the model (including the dependent variable, drug)
 X = df_train.drop(['drugName','rating','date','usefulCount'],axis=1)
 

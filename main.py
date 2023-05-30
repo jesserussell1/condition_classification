@@ -98,7 +98,7 @@ X_feat = X['review_clean']
 y = X['condition']
 
 # Do train test split
-X_train, X_test, y_train, y_test = train_test_split(X_feat, y,test_size=0.2, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X_feat, y, stratify=y, test_size=0.2, random_state=0)
 
 # Bag of words
 count_vectorizer = CountVectorizer(stop_words='english')
