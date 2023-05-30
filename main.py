@@ -33,29 +33,29 @@ def load_data(sheets_url):
 
 df = load_data(st.secrets["public_gsheets_url"])
 
-df_train = df_train.loc[~df_train['condition'].isin(['Acne'])]
+# df_train = df_train.loc[~df_train['condition'].isin(['Acne'])]
 
-df_train = df_train[df_train['condition'].map(df_train['condition'].value_counts()) > 30]
+# df_train = df_train[df_train['condition'].map(df_train['condition'].value_counts()) > 32]
 
-# # Filter for some conditions
-# df_train = df[df['condition'].isin(['Birth Control', 'Depression', 'Pain', 'Anxiety', 'Bipolar Disorder',
-#                                    'Insomnia', 'Weight Loss', 'Obesity', 'ADHD', 'Diabetes, Type 2',
-#                                    'Emergency Contraception', 'High Blood Pressure ', 'Vaginal Yeast Infection',
-#                                    'Abnormal Uterine Bleeding', 'Bowel Preparation', 'ibromyalgia',
-#                                    'Smoking Cessation', 'Migraine' 'Anxiety and Stress', 'Constipation',
-#                                     'Major Depressive Disorde', 'Chronic Pain', 'Panic Disorde', 'Migraine Prevention',
-#                                     'Urinary Tract Infection', 'Opiate Dependence', 'Osteoarthritis', 'Muscle Spasm',
-#                                     'Erectile Dysfunction', 'Generalized Anxiety Disorde', 'Allergic Rhinitis',
-#                                     'Irritable Bowel Syndrome', 'Rheumatoid Arthritis ', 'Bacterial Infection',
-#                                     'Cough', 'Sinusitis', 'Nausea/Vomiting', 'GERD', 'Hepatitis C', 'Hyperhidrosis',
-#                                     'Restless Legs Syndrome', 'Overactive Bladde', 'Multiple Sclerosis',
-#                                     'High Cholesterol', 'Psoriasis', 'Schizophrenia',
-#                                     'Hypogonadism, Male', 'Back Pain', 'Asthma, Maintenance', 'Bronchitis',
-#                                     'Not Listed / Othe', 'Headache', 'Underactive Thyroid',
-#                                     'Influenza', 'Cough and Nasal Congestion',
-#                                     'Opiate Withdrawal', 'Nasal Congestion', 'Pneumonia', 'Osteoporosis', 'Asthma',
-#                                     'Ulcerative Colitis', 'Diarrhea', 'Strep Throat', 'Allergies', 'COPD',
-#                                     'Diabetes, Type 1 ',  'Cold Symptoms', 'Asthma, acute', 'Atrial Fibrillation'])]
+# Filter for some conditions
+df_train = df[df['condition'].isin(['Birth Control', 'Depression', 'Pain', 'Anxiety', 'Bipolar Disorder',
+                                   'Insomnia', 'Weight Loss', 'Obesity', 'ADHD', 'Diabetes, Type 2',
+                                   'Emergency Contraception', 'High Blood Pressure ', 'Vaginal Yeast Infection',
+                                   'Abnormal Uterine Bleeding', 'Bowel Preparation', 'ibromyalgia',
+                                   'Smoking Cessation', 'Migraine' 'Anxiety and Stress', 'Constipation',
+                                    'Major Depressive Disorde', 'Chronic Pain', 'Panic Disorde', 'Migraine Prevention',
+                                    'Urinary Tract Infection', 'Opiate Dependence', 'Osteoarthritis', 'Muscle Spasm',
+                                    'Erectile Dysfunction', 'Generalized Anxiety Disorde', 'Allergic Rhinitis',
+                                    'Irritable Bowel Syndrome', 'Rheumatoid Arthritis ', 'Bacterial Infection',
+                                    'Cough', 'Sinusitis', 'Nausea/Vomiting', 'GERD', 'Hepatitis C', 'Hyperhidrosis',
+                                    'Restless Legs Syndrome', 'Overactive Bladde', 'Multiple Sclerosis',
+                                    'High Cholesterol', 'Psoriasis', 'Schizophrenia',
+                                    'Hypogonadism, Male', 'Back Pain', 'Asthma, Maintenance', 'Bronchitis',
+                                    'Not Listed / Othe', 'Headache', 'Underactive Thyroid',
+                                    'Influenza', 'Cough and Nasal Congestion',
+                                    'Opiate Withdrawal', 'Nasal Congestion', 'Pneumonia', 'Osteoporosis', 'Asthma',
+                                    'Ulcerative Colitis', 'Diarrhea', 'Strep Throat', 'Allergies', 'COPD',
+                                    'Diabetes, Type 1 ',  'Cold Symptoms', 'Asthma, acute', 'Atrial Fibrillation'])]
 
 # Drop columns we won't be using for the model (including the dependent variable, drug)
 X = df_train.drop(['drugName','rating','date','usefulCount'],axis=1)
