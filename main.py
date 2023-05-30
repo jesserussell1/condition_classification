@@ -33,12 +33,9 @@ def load_data(sheets_url):
 
 df = load_data(st.secrets["public_gsheets_url"])
 
-# Look at how many different conditions there are in the data
-df.condition.value_counts().head(n=200)
-
 df_train = df_train.loc[~df_train['condition'].isin(['Acne'])]
 
-df_train = df_train[df_train['condition'].map(df_train['condition'].value_counts()) > 25]
+df_train = df_train[df_train['condition'].map(df_train['condition'].value_counts()) > 30]
 
 # # Filter for some conditions
 # df_train = df[df['condition'].isin(['Birth Control', 'Depression', 'Pain', 'Anxiety', 'Bipolar Disorder',
