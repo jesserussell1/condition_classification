@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 import re
 
 st.title("Natural Language Processing Medical Conditions App")
-st.header("Random Forest Model based on text for Medical Conditions")
+st.header("Random Forest Model Based on Text for Medical Conditions")
 st.subheader("Jesse Russell - June 2023")
 st.text("Data Source: https://archive.ics.uci.edu/ml/datasets/Drug+Review+Dataset+%28Drugs.com%29")
 
@@ -25,7 +25,6 @@ loaded_rf = load_model()
 
 @st.cache_data
 def load_data(sheets_url):
-    #csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
     return pd.read_csv(sheets_url)
 
 df = load_data(st.secrets["public_gsheets_url"])
@@ -107,7 +106,7 @@ st.caption("This might take a minute -- the model vectorizes a lot of data. If y
 left_column, right_column = st.columns(2)
 
 with left_column:
-    inp_description = st.text_input('Description of your condition')
+    inp_description = st.text_area('Description of your condition')
 
 if st.button('Make Guess'):
     inp_description_raw = review_to_words(inp_description)
