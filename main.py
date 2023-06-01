@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 import re
 
 st.title("Natural Language Processing Medical Conditions App")
-st.header("Random Forest Model Based on Text for Medical Conditions")
+st.subheader("Random Forest Model Based on Text for Medical Conditions")
 st.subheader("Jesse Russell - June 2023")
 st.text("Data Source: https://archive.ics.uci.edu/ml/datasets/Drug+Review+Dataset+%28Drugs.com%29")
 
