@@ -7,17 +7,14 @@ import joblib
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-from nltk.stem import PorterStemmer
 
 from bs4 import BeautifulSoup
 import re
 
-st.title("NLP Medical Condition Classification App")
-st.header("Random Forest Model for Medical Condition Based on Text")
-st.subheader("Jesse Russell - May 2023")
+st.title("Natural Language Processing Medical Conditions App")
+st.header("Random Forest Model based on text for Medical Conditions")
+st.subheader("Jesse Russell - June 2023")
 st.text("Data Source: https://archive.ics.uci.edu/ml/datasets/Drug+Review+Dataset+%28Drugs.com%29")
-
-
 
 #Load the model
 @st.cache_resource
@@ -32,8 +29,6 @@ def load_data(sheets_url):
     return pd.read_csv(sheets_url)
 
 df = load_data(st.secrets["public_gsheets_url"])
-
-# df_train = df_train.loc[~df_train['condition'].isin(['Acne'])]
 
 # df_train = df_train[df_train['condition'].map(df_train['condition'].value_counts()) > 32]
 
@@ -63,7 +58,6 @@ X = df_train.drop(['drugName','rating','date','usefulCount'],axis=1)
 # Remove double quotes
 for i, col in enumerate(X.columns):
     X.iloc[:, i] = X.iloc[:, i].str.replace('"', '')
-
 
 # Get list of stopwords
 nltk.download('stopwords')
@@ -106,7 +100,7 @@ count_train = count_vectorizer.fit_transform(X_train)
 #count_test = count_vectorizer.transform(X_test)
 
 # Web page contents
-st.subheader("Enter a couple of sentences about your condition experiences and medications.")
+st.subheader("Enter a couple of sentences about medical experiences and medications.")
 st.caption("This might take a minute -- the model vectorizes a lot of data. If you don't get the "
            "expected result, try adding details.")
 
