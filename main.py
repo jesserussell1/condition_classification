@@ -116,4 +116,5 @@ if st.button('Make Guess'):
     prediction = loaded_rf.predict(input_array)
 
     st.write("Your guess is: " + str(prediction))
+    st.caption("Note: this is not a diagnosis, it is just an demonstration of the potential for NLP use.")
 
